@@ -2,13 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>MyFirstApp</title>
+  <title>Cheng Recipe Book</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Roboto" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"> -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous"> -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" /> -->
 </head>
 <body>
   <app-root></app-root>
+    <!-- Add Bootstrap scripts -->
+    <!-- <script
+    src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" 
+    crossorigin="anonymous"></script>
+  <script 
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" 
+    integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" 
+    crossorigin="anonymous"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script> -->
+
+  <!-- Add project scripts -->
+  <script>
+    // Get the current year for the copyright
+    // $('#year').text(new Date().getFullYear());
+
+    // Configure Slider 
+    $('.carousel').carousel({
+        interval: 6000,
+        pause: 'hover'
+    });
+
+    // Lightbox Init
+    // $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+    //     event.preventDefault();
+    //     $(this).ekkoLightbox();
+    // });
+
+    // Video Play
+    // $(function () {
+    //     $(".video").click(function () {
+    //         var theModal = $(this).data("target");
+    //         var videoSRC = $(this).attr("data-video");
+    //         videoSRCauto = videoSRC + "?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
+    //         $(theModal + ' iframe').attr('src', videoSRCauto);
+    //         $(theModal + ' button.close').click(function () {
+    //             $(theModal + ' iframe').attr('src', videoSRC);
+    //         });
+    //     });
+    // });
+  </script>
 </body>
 </html>

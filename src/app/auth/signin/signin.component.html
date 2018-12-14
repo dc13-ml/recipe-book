@@ -1,15 +1,31 @@
-<div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form (ngSubmit)="onSignin(f)" #f="ngForm">
-        <div class="form-group">
-          <label for="email">Mail</label>
-          <input type="email" id="email" name="email" ngModel class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" ngModel class="form-control">
-        </div>
-        <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Sign In</button>
-      </form>
-    </div>
-  </div>
+<section>
+  <form 
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="15px"
+    [formGroup]="signinForm"
+    (ngSubmit)="onSignin()">
+    <mat-form-field>
+      <input 
+        type="email" 
+        id="email" 
+        formControlName="email"
+        matInput
+        placeholder="Your email">
+    </mat-form-field>
+    <mat-form-field>
+      <input 
+        type="password" 
+        id="password" 
+        formControlName="password" 
+        matInput
+        placeholder="Your password">
+    </mat-form-field>
+    <button 
+      mat-raised-button 
+      color="primary" 
+      type="submit" 
+      [disabled]="signinForm.invalid">Sign In</button>
+    <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+  </form>
+</section>

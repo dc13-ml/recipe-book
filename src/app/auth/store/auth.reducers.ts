@@ -33,3 +33,5 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
             return state;
     }
 }
+
+export const getIsAuth = (state: State) => state.authenticated;

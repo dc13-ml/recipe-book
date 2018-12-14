@@ -1,0 +1,13 @@
+.form {
+    margin: 50px;
+    height: 600px;
+}
+
+.mat-form-field {
+    width: 400px;
+    font-size: large;
+}
+
+.mat-raised-button {
+    width: 400px;
+}

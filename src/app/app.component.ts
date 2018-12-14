@@ -8,6 +8,7 @@ import * as firebase from 'firebase';
 })
 export class AppComponent implements OnInit {
   loadedFeature = 'recipe';
+  openSidenav = false;
 
   ngOnInit() {
     // firebase.initializeApp({

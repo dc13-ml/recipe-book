@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromAuth from '../../auth/store/auth.reducers';
-import * as fromApp from '../../store/app.reducers'
+import * as fromApp from '../../store/app.reducers';
 import { Observable } from 'rxjs';
 import * as AuthActions from '../../auth/store/auth.actions';
 import * as RecipeActions from '../../recipes/store/recipe.actions';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html'
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @Output() sidenavToggle = new EventEmitter<void>();
   authState: Observable<fromAuth.State>;
 
   constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit() {
-    this.authState = this.store.select('auth')
+    this.authState = this.store.select('auth');
   }
 
   onSaveData() {
@@ -29,5 +31,10 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     this.store.dispatch(new AuthActions.Logout());
+  }
+
+  onToggleSidenav() {
+    console.log('onTogglesSidenav');
+    this.sidenavToggle.emit();
   }
 }

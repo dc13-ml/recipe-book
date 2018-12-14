@@ -1,18 +1,20 @@
-import { NgModule } from "@angular/core";
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { HeaderComponent } from "./header/header.component";
-import { HomeComponent } from "./home/home.component";
-import { SharedModule } from "../shared/shared.module";
-import { AppRoutingModule } from "../app-routing.module";
-import { AuthGuard } from "../auth/auth-guard.service";
-import { AuthInterceptor } from "../shared/auth.interceptor";
-import { LoggingInterceptor } from "../shared/logging.interceptor";
+import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+import { SharedModule } from '../shared/shared.module';
+import { AppRoutingModule } from '../app-routing.module';
+import { AuthGuard } from '../auth/auth-guard.service';
+import { AuthInterceptor } from '../shared/auth.interceptor';
+import { LoggingInterceptor } from '../shared/logging.interceptor';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
     declarations: [
         HeaderComponent,
-        HomeComponent
+        HomeComponent,
+        SidenavComponent
     ],
     imports: [
         SharedModule,
@@ -20,7 +22,8 @@ import { LoggingInterceptor } from "../shared/logging.interceptor";
     ],
     exports: [
         AppRoutingModule,
-        HeaderComponent
+        HeaderComponent,
+        SidenavComponent
     ],
     providers: [
         AuthGuard,

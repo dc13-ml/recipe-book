@@ -1,0 +1,56 @@
+<section>
+  <form 
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="15px"
+    [formGroup]="supplierEditForm"
+    (ngSubmit)="onEdit()">
+    <mat-form-field>
+      <input 
+        type="text"
+        id="name"
+        formControlName="name"
+        matInput
+        placeholder="Supplier Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input 
+        type="text"
+        id="description"
+        formControlName="description"
+        matInput
+        placeholder="Description">
+    </mat-form-field>
+    <mat-form-field>
+      <input 
+        type="text"
+        id="phoneNumber"
+        formControlName="phoneNumber"
+        matInput
+        placeholder="Phone Number">
+    </mat-form-field>
+    <mat-form-field>
+      <input 
+        type="text"
+        id="address"
+        formControlName="address"
+        matInput
+        placeholder="Address">
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]=false>Save</button>
+    <button
+      matInput
+      color="accent"
+      type="button"
+      (click)="onDelete()">Delete</button>
+    <button
+      matInput
+      color="accent"
+      type="button"
+      (click)="onClear()">Clear</button>
+  </form>
+</section>

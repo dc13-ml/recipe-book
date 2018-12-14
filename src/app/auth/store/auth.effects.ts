@@ -3,8 +3,11 @@ import { Injectable } from '@angular/core';
 import { map, tap, switchMap, mergeMap } from 'rxjs/operators';
 import { from } from 'rxjs';
 import * as firebase from 'firebase';
+import { Store } from '@ngrx/store';
 
 import * as AuthActions from './auth.actions';
+import * as UiActions from '../../shared/ui.actions';
+import * as fromApp from '../../store/app.reducers';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -16,14 +19,16 @@ export class AuthEffects {
         .pipe(
             map((action: AuthActions.TrySignup) => {
                 return action.payload;
-            }), 
+            }),
             switchMap((authData: {username: string, password: string}) => {
+                this.store.dispatch(new UiActions.StartLoading());
                 return from(firebase.auth().createUserWithEmailAndPassword(authData.username, authData.password));
             }),
             switchMap(() => {
                 return from(firebase.auth().currentUser.getIdToken());
             }),
             mergeMap((token: string) => {
+                this.store.dispatch(new UiActions.StopLoading());
                 return [
                     {
                         type: AuthActions.SIGNUP
@@ -34,7 +39,7 @@ export class AuthEffects {
                 ];
             }));
 
-    
+
     @Effect()
     authSigin = this.actions$
         .ofType(AuthActions.TRY_SIGNIN)
@@ -43,13 +48,15 @@ export class AuthEffects {
                 return action.payload;
             }),
             switchMap((authData: {username: string, password: string}) => {
+                this.store.dispatch(new UiActions.StartLoading());
                 return from(firebase.auth().signInWithEmailAndPassword(authData.username, authData.password));
             }),
             switchMap(() => {
                 return from(firebase.auth().currentUser.getIdToken());
             }),
             mergeMap((token: string) => {
-                this.router.navigate(['/']);
+                this.router.navigate(['/recipes']);
+                this.store.dispatch(new UiActions.StopLoading());
                 return [
                     {
                         type: AuthActions.SIGNIN
@@ -64,9 +71,11 @@ export class AuthEffects {
     authLogout = this.actions$
         .ofType(AuthActions.LOGOUT)
         .pipe(tap(() => {
-            this.router.navigate(['/'])
+            this.router.navigate(['/']);
         }));
-    
-    constructor(private actions$: Actions, private router: Router) {
+
+    constructor(private actions$: Actions,
+                private router: Router,
+                private store: Store<fromApp.AppState>) {
     }
 }
